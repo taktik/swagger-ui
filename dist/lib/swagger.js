@@ -478,7 +478,7 @@ SwaggerResource.prototype.addOperations = function(resource_path, ops, consumes,
 
 SwaggerResource.prototype.sanitize = function(nickname) {
   var op;
-  op = nickname.replace(/[\s!@#$%^&*()_+=\[{\]};:<>|./?,\\'""-]/g, '_');
+  op = nickname.replace(/[\s!@#$%^&*()_+=\[{\]};:<>|.\/?,\\'""-]/g, '_');
   //'
   op = op.replace(/((_){2,})/g, '_');
   op = op.replace(/^(_)*/g, '');
@@ -545,7 +545,7 @@ SwaggerModel.prototype.getMockSignature = function(modelsToIgnore) {
   var strong = '<span class="strong">';
   var stronger = '<span class="stronger">';
   var strongClose = '</span>';
-  var classOpen = strong + this.name + ' {' + strongClose;
+  var classOpen = strong + this.name + ' {' + strongClose + '<span>' +this.description +'</span>';
   var classClose = strong + '}' + strongClose;
   var returnVal = classOpen + '<div>' + propertiesStr.join(',</div><div>') + '</div>' + classClose;
   if (!modelsToIgnore)
